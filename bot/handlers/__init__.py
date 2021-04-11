@@ -5,6 +5,7 @@ from .disconnect import Disconnect
 from .help import Help
 
 from .admin.show_chats import ShowChats
+from .admin.show_users import ShowUsers
 
 
 __all__ = [
@@ -14,4 +15,5 @@ __all__ = [
     'Disconnect',
     'Help',
     'ShowChats',
+    'ShowUsers',
 ]

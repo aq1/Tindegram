@@ -1,8 +1,3 @@
-import random
-
-from pymongo.errors import DuplicateKeyError
-from telegram import User
-
 from mongo.client import db
 
 

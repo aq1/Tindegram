@@ -9,8 +9,8 @@ from .base import BaseCommand
 class Forward(BaseCommand):
 
     FAIL_TEXT = (
-        'You are not connected to any chat\n'
-        'Type /connect to start a conversation'
+        'Вы ни с кем не общаетесь\n'
+        'Напишите /connect чтобы найти собеседника'
     )
 
     def _execute(self, user: dict, update: Update, context: CallbackContext) -> bool:

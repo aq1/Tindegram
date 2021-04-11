@@ -1,6 +1,5 @@
-from telegram import Update, ForceReply
+from telegram import Update
 from telegram.ext import CallbackContext
-from mongo import users
 
 from .base import BaseCommand
 

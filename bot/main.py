@@ -17,6 +17,7 @@ def start_bot():
     dispatcher.add_handler(CommandHandler('help', Help()))
 
     dispatcher.add_handler(CommandHandler('show_chats', ShowChats()))
+    dispatcher.add_handler(CommandHandler('show_users', ShowUsers()))
 
     dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, Forward()))
 

@@ -1,4 +1,4 @@
-from telegram import Update, ForceReply
+from telegram import Update
 from telegram.ext import CallbackContext
 from mongo import users
 
@@ -7,9 +7,10 @@ from .base import BaseCommand
 
 class Start(BaseCommand):
     OK_TEXT = (
-        'Hello. This bot creates chat with a random user.\n'
-        'We do not store your messages.\n'
-        'Type /connect to start your first conversation.'
+        'Привет. Этот бот создает чат со случайным пользователем.\n'
+        'Мы не храним ваши сообщения.\n'
+        'Нажмите /connect чтобы начать первый разговор. '
+        'Пока что пересылаются только текстовые сообщения'
     )
 
     def _execute(self, user: dict, update: Update, context: CallbackContext) -> bool:

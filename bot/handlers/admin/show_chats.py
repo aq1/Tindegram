@@ -18,6 +18,6 @@ class ShowChats(BaseAdminCommand):
             result.append(' and '.join(_users))
 
         update.message.reply_text(
-            '\n'.join(result)
+            '\n'.join(result) or 'No chats'
         )
         return True

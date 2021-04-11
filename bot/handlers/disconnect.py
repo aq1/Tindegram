@@ -8,12 +8,12 @@ from .base import BaseCommand
 
 class Disconnect(BaseCommand):
     OK_TEXT = (
-        'You are disconnected\n'
-        'Type /connect to start new conversation.'
+        'Вы закончили разговор\n'
+        'Напишите /connect чтобы начать новый'
     )
 
     FAIL_TEXT = (
-        'You are not connected to any chat'
+        'Вы ни с кем не общаетесь'
     )
 
     def _execute(self, user: dict, update: Update, context: CallbackContext) -> bool:
@@ -27,11 +27,11 @@ class Disconnect(BaseCommand):
                     context.bot.send_message(
                         chat_id=chat_id,
                         text=(
-                            'Your partner has left the chat. Type /connect to start new conversation'
+                            'Ваш собеседник покинул чат. Напишите /connect чтобы найти нового'
                         ),
                     )
                 except TelegramError:
                     pass
 
-        bool(chats.remove(chat['_id']))
+        bool(chats.disconnect(user['chat_id']))
         return True

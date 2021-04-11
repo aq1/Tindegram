@@ -20,8 +20,8 @@ class BaseCommand:
         except Exception as e:
             logging.exception(str(e))
             update.message.reply_text(
-                'We encountered an error. '
-                'This bot is in development so it is not a surprise',
+                'Произошла ошибка. '
+                'Бот находится в разработке, так что это неудивительно',
             )
             return
 
