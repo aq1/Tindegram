@@ -2,5 +2,6 @@
 Description=Tindegram
 After=multi-user.target
 [Service]
+WorkingDirectory=/apps/Tindegram/
 Type=idle
 ExecStart=/apps/Tindegram/.venv/bin/python /apps/Tindegram/manage.py
