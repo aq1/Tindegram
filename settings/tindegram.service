@@ -1,0 +1,6 @@
+[Unit]
+Description=Tindegram
+After=multi-user.target
+[Service]
+Type=idle
+ExecStart=/projects/tindegram/.env/bin/python /projects/tindegram/manage.py
