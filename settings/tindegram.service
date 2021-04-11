@@ -5,6 +5,7 @@ After=multi-user.target
 [Service]
 Type=simple
 ExecStart=/apps/Tindegram/.venv/bin/python /apps/Tindegram/manage.py
+WorkingDirectory=/apps/Tindegram/
 StandardInput=tty-force
 
 [Install]
