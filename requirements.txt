@@ -1,3 +1,4 @@
 python_telegram_bot
 pymongo~=3.11.3
 django-environ
+sentry-sdk

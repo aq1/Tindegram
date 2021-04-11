@@ -1,5 +1,6 @@
 import logging
 
+import sentry_sdk
 from telegram import Update
 from telegram.ext import CallbackContext
 
@@ -15,6 +16,13 @@ class BaseCommand:
 
     def __call__(self, update: Update, context: CallbackContext) -> None:
         user = users.get_user(update.effective_user.id)
+
+        if user:
+            sentry_sdk.set_context('user', {
+                'username': user['username'],
+                'chat_id': user['chat_id'],
+            })
+
         try:
             ok = self._execute(user, update, context)
         except Exception as e:

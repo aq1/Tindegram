@@ -22,3 +22,6 @@ TELEGRAM_ADMINS = [
     for _id in env.list('TELEGRAM_ADMINS')
     if _id.isdigit()
 ]
+
+
+SENTRY_URL = env('SENTRY_URL')
