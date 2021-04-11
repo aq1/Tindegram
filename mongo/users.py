@@ -36,10 +36,10 @@ def save_user(user: User):
     try:
         db.users.save({
             'chat_id': user.id,
-            'username': user.username,
-            'first_name': user.first_name,
-            'last_name': user.last_name,
-            'language': user.language_code,
+            'username': user.username or '',
+            'first_name': user.first_name or '',
+            'last_name': user.last_name or '',
+            'language': user.language_code or 'en',
             'chat_with': None,
         })
     except DuplicateKeyError:
