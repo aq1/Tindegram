@@ -12,7 +12,7 @@ class ShowChats(BaseAdminCommand):
         result = []
         for chat in _chats:
             _users = [
-                users.get_user(chat_id)['username']
+                users.get_user_str(users.get_user(chat_id))
                 for chat_id in chat['users']
             ]
             result.append(' and '.join(_users))

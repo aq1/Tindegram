@@ -8,7 +8,7 @@ from .base import BaseAdminCommand
 
 class ShowUsers(BaseAdminCommand):
     def _execute(self, user: dict, update: Update, context: CallbackContext) -> bool:
-        _users = [u['username'] for u in users.get_all_users()]
+        _users = [users.get_user_str(u) for u in users.get_all_users()]
 
         update.message.reply_text(
             '\n'.join(_users) or 'No users'

@@ -6,6 +6,13 @@ from telegram import User
 from mongo.client import db
 
 
+def get_user_str(user: dict) -> str:
+    return user['username'] or '{} {}'.format(
+        user['first_name'],
+        user['last_name'],
+    )
+
+
 def get_all_users():
     return db.users.find({})
 
