@@ -18,7 +18,7 @@ class Disconnect(BaseCommand):
 
     def _execute(self, user: dict, update: Update, context: CallbackContext) -> bool:
         chat = chats.get_chat(user['chat_id'])
-        if not user:
+        if not chat:
             return False
 
         for chat_id in chat['users']:
