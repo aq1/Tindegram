@@ -16,8 +16,8 @@ jobs:
         key: ${{ secrets.KEY }}
         passphrase: ${{ secrets.PASSPHRASE }}
         script: |
-            cd {{ secrets.WORKING_DIR }}
+            cd /apps/Tindegram/
             && git pull
-            && source {{ WORKING_DIR }}/.venv/bin/activate
+            && source /apps/Tindegram/.venv/bin/activate
             && pip install -r requirements.txt
             && systemctl restart tindegram
