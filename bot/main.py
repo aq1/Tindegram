@@ -19,7 +19,7 @@ def start_bot():
     dispatcher.add_handler(CommandHandler('show_chats', ShowChats()))
     dispatcher.add_handler(CommandHandler('show_users', ShowUsers()))
 
-    dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, Forward()))
+    dispatcher.add_handler(MessageHandler(~Filters.command, Forward()))
 
     logging.info('Starting bot')
     for admin_id in settings.TELEGRAM_ADMINS:

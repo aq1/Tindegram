@@ -2,13 +2,11 @@ from pathlib import Path
 
 import environ
 
-
 ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
-
-
 env = environ.Env()
 environ.Env.read_env(env.str('ENV_PATH', '.env'))
 
+DEBUG = env('DEBUG', default=False)
 
 MONGO_HOST = env('MONGO_HOST')
 MONGO_PORT = env('MONGO_PORT')
@@ -22,6 +20,5 @@ TELEGRAM_ADMINS = [
     for _id in env.list('TELEGRAM_ADMINS')
     if _id.isdigit()
 ]
-
 
 SENTRY_URL = env('SENTRY_URL')
