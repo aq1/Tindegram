@@ -31,3 +31,9 @@ def remove(_id):
     return db.chats.remove({
         '_id': _id,
     })
+
+
+def delete_chats_for_user(chat_id: int) -> None:
+    db.chats.remove({
+        'users': chat_id,
+    })

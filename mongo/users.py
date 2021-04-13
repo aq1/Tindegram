@@ -90,3 +90,9 @@ def get_connected_user(chat_id):
     return db.users.find_one({
         'chat_with': chat_id,
     })
+
+
+def delete_user(chat_id: int) -> None:
+    db.users.remove({
+        'chat_id':chat_id,
+    })

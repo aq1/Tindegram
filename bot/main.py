@@ -1,6 +1,12 @@
 import logging
 
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telegram.ext import (
+    Updater,
+    CommandHandler,
+    MessageHandler,
+    Filters,
+    ChatMemberHandler,
+)
 
 import settings
 
@@ -18,6 +24,8 @@ def start_bot():
 
     dispatcher.add_handler(CommandHandler('show_chats', ShowChats()))
     dispatcher.add_handler(CommandHandler('show_users', ShowUsers()))
+
+    dispatcher.add_handler(ChatMemberHandler(ChatMember()))
 
     dispatcher.add_handler(MessageHandler(~Filters.command, Forward()))
 
