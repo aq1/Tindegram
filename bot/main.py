@@ -21,6 +21,7 @@ def start_bot():
     dispatcher.add_handler(CommandHandler('connect', Connect()))
     dispatcher.add_handler(CommandHandler('disconnect', Disconnect()))
     dispatcher.add_handler(CommandHandler('help', Help()))
+    dispatcher.add_handler(CommandHandler('pause', Pause()))
 
     dispatcher.add_handler(CommandHandler('show_chats', ShowChats()))
     dispatcher.add_handler(CommandHandler('show_users', ShowUsers()))

@@ -18,6 +18,8 @@ class Connect(BaseCommand):
     )
 
     def _execute(self, user: dict, update: Update, context: CallbackContext) -> bool:
+        if user['paused']:
+            users.user_set_paused(user['chat_id'], False)
         try:
             exclude = chats.get_chat(user['chat_id'])['users']
         except TypeError:

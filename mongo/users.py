@@ -29,9 +29,11 @@ def get_random_user(exclude=None):
         db.users.find({
             'chat_id': {'$not': {'$in': exclude}},
             'chat_with': None,
+            'paused': False,
         }, {
             'chat_id': True,
-        }))
+        })
+    )
 
     if users:
         user = random.choice(users)
@@ -41,14 +43,19 @@ def get_random_user(exclude=None):
 
 def save_user(user: User):
     try:
-        db.users.save({
-            'chat_id': user.id,
-            'username': user.username or '',
-            'first_name': user.first_name or '',
-            'last_name': user.last_name or '',
-            'language': user.language_code or 'en',
-            'chat_with': None,
-        })
+        db.users.update(
+            {'chat_id': user.id},
+            {
+                'chat_id': user.id,
+                'username': user.username or '',
+                'first_name': user.first_name or '',
+                'last_name': user.last_name or '',
+                'language': user.language_code or 'en',
+                'chat_with': None,
+                'paused': False,
+            },
+            upsert=True,
+        )
     except DuplicateKeyError:
         pass
 
@@ -94,5 +101,15 @@ def get_connected_user(chat_id):
 
 def delete_user(chat_id: int) -> None:
     db.users.remove({
-        'chat_id':chat_id,
+        'chat_id': chat_id,
+    })
+
+
+def user_set_paused(chat_id: int, value: bool) -> None:
+    db.users.update_one({
+        'chat_id': chat_id,
+    }, {
+        '$set': {
+            'paused': value,
+        }
     })

@@ -3,6 +3,7 @@ from .forward import Forward
 from .connect import Connect
 from .disconnect import Disconnect
 from .help import Help
+from .pause import Pause
 from .chat_member import ChatMember
 
 from .admin.show_chats import ShowChats
@@ -17,5 +18,6 @@ __all__ = [
     'Help',
     'ShowChats',
     'ShowUsers',
+    'Pause',
     'ChatMember',
 ]
