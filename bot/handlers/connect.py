@@ -7,6 +7,10 @@ from .base import BaseCommand
 
 
 class Connect(BaseCommand):
+    HELP = (
+        'начать новый разговор'
+    )
+
     OK_TEXT = (
         'Собеседник найден! Начинайте общение.\n'
         'Напишите /disconnect чтобы остановить разговор.'

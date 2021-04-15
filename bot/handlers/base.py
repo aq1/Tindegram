@@ -3,13 +3,19 @@ import logging
 import sentry_sdk
 from telegram import Update
 from telegram.ext import CallbackContext
+import stringcase
 
 from mongo import users
 
 
 class BaseCommand:
+    HELP = ''
     OK_TEXT = ''
     FAIL_TEXT = ''
+
+    @property
+    def help_text(self) -> str:
+        return f'{self} - {self.HELP}'
 
     def _execute(self, user: dict, update: Update, context: CallbackContext) -> bool:
         return NotImplemented
@@ -37,3 +43,6 @@ class BaseCommand:
 
         if text:
             update.effective_chat.send_message(text)
+
+    def __str__(self):
+        return stringcase.snakecase(self.__class__.__name__)

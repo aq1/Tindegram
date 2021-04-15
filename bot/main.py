@@ -17,24 +17,24 @@ def start_bot():
     updater = Updater(settings.TELEGRAM_TOKEN)
     dispatcher = updater.dispatcher
 
-    dispatcher.add_handler(CommandHandler('start', Start()))
-    dispatcher.add_handler(CommandHandler('connect', Connect()))
-    dispatcher.add_handler(CommandHandler('disconnect', Disconnect()))
-    dispatcher.add_handler(CommandHandler('help', Help()))
-    dispatcher.add_handler(CommandHandler('pause', Pause()))
-
-    dispatcher.add_handler(CommandHandler('show_chats', ShowChats()))
-    dispatcher.add_handler(CommandHandler('show_users', ShowUsers()))
+    for command in commands:
+        dispatcher.add_handler(CommandHandler(str(command), command))
 
     dispatcher.add_handler(ChatMemberHandler(ChatMember()))
-
     dispatcher.add_handler(MessageHandler(~Filters.command, Forward()))
 
     logging.info('Starting bot')
+
+    commands_help_text = '\n'.join([
+        command.help_text
+        for command in commands
+        if command.help_text
+    ])
+
     for admin_id in settings.TELEGRAM_ADMINS:
         updater.bot.send_message(
             chat_id=admin_id,
-            text='Starting...'
+            text='\n{}'.format(commands_help_text)
         )
 
     updater.start_polling()

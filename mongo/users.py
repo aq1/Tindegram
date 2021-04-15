@@ -52,7 +52,7 @@ def save_user(user: User):
                 'last_name': user.last_name or '',
                 'language': user.language_code or 'en',
                 'chat_with': None,
-                'paused': False,
+                'paused': True,
             },
             upsert=True,
         )
