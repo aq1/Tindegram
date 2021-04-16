@@ -9,6 +9,7 @@ from .connect import Connect
 from .disconnect import Disconnect
 from .help import Help
 from .pause import Pause
+from .feedback import Feedback
 from .chat_member import ChatMember
 
 from .admin.show_chats import ShowChats
@@ -24,6 +25,7 @@ commands: List['BaseCommand'] = [
     Disconnect(),
     Help(),
     Pause(),
+    Feedback(),
     ShowChats(),
     ShowUsers(),
 ]
