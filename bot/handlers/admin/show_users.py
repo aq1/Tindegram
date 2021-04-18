@@ -10,8 +10,8 @@ class ShowUsers(BaseAdminCommand):
     def _execute(self, user: users.User, update: Update, context: CallbackContext) -> bool:
         _users = [
             '{}{}'.format(
+                '⏹' if u.paused else '👌',
                 str(u),
-                ' - paused' if u.paused else '',
             )
             for u in users.get_all_users()
         ]
