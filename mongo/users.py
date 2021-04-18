@@ -9,7 +9,7 @@ from mongo.client import db
 class User:
     def __init__(self, user_dict: dict[str, Any]):
         self.chat_id: int = user_dict['chat_id']
-        self.username: str = user_dict['chat_id']
+        self.username: str = user_dict['username']
         self.first_name: str = user_dict['first_name']
         self.last_name: str = user_dict['last_name']
         self.language: str = user_dict['language']
