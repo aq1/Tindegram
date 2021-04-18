@@ -21,7 +21,7 @@ class Feedback(BaseCommand):
         'Пишите сообщение сразу, например "/feedback привет"'
     )
 
-    def _execute(self, user: dict, update: Update, context: CallbackContext) -> bool:
+    def _execute(self, user: users.User, update: Update, context: CallbackContext) -> bool:
         if not context.args:
             return False
 
@@ -29,8 +29,8 @@ class Feedback(BaseCommand):
             context.bot.send_message(
                 chat_id=admin,
                 text='{} {}\n{}'.format(
-                    users.get_user_str(user),
-                    user['chat_id'],
+                    str(user),
+                    user.chat_id,
                     ' '.join(context.args),
                 ),
             )

@@ -21,11 +21,11 @@ class Connect(BaseCommand):
         'Скорее всего они заняты в других чатах.'
     )
 
-    def _execute(self, user: dict, update: Update, context: CallbackContext) -> bool:
-        if user['paused']:
-            users.user_set_paused(user['chat_id'], False)
+    def _execute(self, user: users.User, update: Update, context: CallbackContext) -> bool:
+        if user.paused:
+            users.user_set_paused(user.chat_id, False)
 
-        partner_chat_id = chats.connect(user['chat_id'])
+        partner_chat_id = chats.connect(user.chat_id)
 
         if partner_chat_id:
             context.bot.send_message(

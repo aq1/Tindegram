@@ -1,102 +1,54 @@
-import random
+from typing import Any, List
 
 from pymongo.errors import DuplicateKeyError
-from telegram import User
+from telegram import User as TelegramUser
 
 from mongo.client import db
 
 
-def get_user_str(user: dict) -> str:
-    return user['username'] or '{} {}'.format(
-        user['first_name'],
-        user['last_name'],
-    )
+class User:
+    def __init__(self, user_dict: dict[str, Any]):
+        self.chat_id: int = user_dict['chat_id']
+        self.username: str = user_dict['chat_id']
+        self.first_name: str = user_dict['first_name']
+        self.last_name: str = user_dict['last_name']
+        self.language: str = user_dict['language']
+        self.paused: bool = user_dict['paused']
+
+    def __str__(self) -> str:
+        return str(self.username or f'{self.first_name} {self.last_name}')
 
 
-def get_all_users():
-    return db.users.find({})
+def get_all_users() -> List[User]:
+    return [User(u) for u in db.users.find({})]
 
 
-def get_user(chat_id):
-    return db.users.find_one({
+def get_user(chat_id: int) -> User:
+    return User(db.users.find_one({
         'chat_id': chat_id,
-    })
+    }))
 
 
-def get_random_user(exclude=None):
-    exclude = exclude or []
-    users = list(
-        db.users.find({
-            'chat_id': {'$not': {'$in': exclude}},
-            'chat_with': None,
-            'paused': False,
-        }, {
-            'chat_id': True,
-        })
-    )
-
-    if users:
-        user = random.choice(users)
-        if user:
-            return user['chat_id']
-
-
-def save_user(user: User):
+def save_user(user: TelegramUser) -> User:
+    user_dict = {
+        'chat_id': user.id,
+        'username': user.username or '',
+        'first_name': user.first_name or '',
+        'last_name': user.last_name or '',
+        'language': user.language_code or 'en',
+        'chat_with': None,
+        'paused': True,
+    }
     try:
         db.users.update(
             {'chat_id': user.id},
-            {
-                'chat_id': user.id,
-                'username': user.username or '',
-                'first_name': user.first_name or '',
-                'last_name': user.last_name or '',
-                'language': user.language_code or 'en',
-                'chat_with': None,
-                'paused': True,
-            },
+            user_dict,
             upsert=True,
         )
     except DuplicateKeyError:
         pass
 
-
-def connect(first, second):
-    modified = 0
-    modified += db.users.update_one({
-        'chat_id': first,
-        'chat_with': None,
-    }, {
-        '$set': {
-            'chat_with': second,
-        },
-    }).modified
-
-    modified += db.users.update_one({
-        'chat_id': second,
-        'chat_with': None,
-    }, {
-        '$set': {
-            'chat_with': first,
-        },
-    }).modified
-
-    if modified != 2:
-        db.users.update({
-            'chat_id': {'$in': [first, second]}
-        }, {
-            '$set': {
-                'chat_with': None,
-            }}
-        )
-        return False
-
-    return True
-
-
-def get_connected_user(chat_id):
-    return db.users.find_one({
-        'chat_with': chat_id,
-    })
+    return User(user_dict)
 
 
 def delete_user(chat_id: int) -> None:

@@ -19,6 +19,5 @@ class Start(BaseCommand):
         'Пересылаются текст, фото, видео, стикеры, анимация, голосовые и видео сообщения'
     )
 
-    def _execute(self, user: dict, update: Update, context: CallbackContext) -> bool:
-        users.save_user(update.effective_user)
+    def _execute(self, user: users.User, update: Update, context: CallbackContext) -> bool:
         return True

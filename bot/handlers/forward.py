@@ -1,7 +1,10 @@
 from telegram import Update, Message, Bot, TelegramError
 from telegram.ext import CallbackContext
 
-from mongo import chats
+from mongo import (
+    chats,
+    users,
+)
 
 from .base import BaseCommand
 
@@ -12,13 +15,13 @@ class Forward(BaseCommand):
         'Напишите /connect чтобы найти собеседника'
     )
 
-    def _execute(self, user: dict, update: Update, context: CallbackContext) -> bool:
-        chat = chats.get_chat(user['chat_id'])
+    def _execute(self, user: users.User, update: Update, context: CallbackContext) -> bool:
+        chat = chats.get_chat(user.chat_id)
         if not chat:
             return False
 
         for chat_id in chat['users']:
-            if chat_id != user['chat_id']:
+            if chat_id != user.chat_id:
                 try:
                     self._forward_message(
                         bot=context.bot,

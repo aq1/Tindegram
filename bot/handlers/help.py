@@ -1,6 +1,8 @@
 from telegram import Update
 from telegram.ext import CallbackContext
 
+from mongo import users
+
 from .base import BaseCommand
 
 
@@ -21,5 +23,5 @@ class Help(BaseCommand):
         'Бот пересылает текст, видео, фото, стикеры, анимацию, аудио и видео сообщения'
     )
 
-    def _execute(self, user: dict, update: Update, context: CallbackContext) -> bool:
+    def _execute(self, user: users.User, update: Update, context: CallbackContext) -> bool:
         return True

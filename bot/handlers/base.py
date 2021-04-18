@@ -17,16 +17,18 @@ class BaseCommand:
     def help_text(self) -> str:
         return f'{self} - {self.HELP}'
 
-    def _execute(self, user: dict, update: Update, context: CallbackContext) -> bool:
+    def _execute(self, user: users.User, update: Update, context: CallbackContext) -> bool:
         return NotImplemented
 
     def __call__(self, update: Update, context: CallbackContext) -> None:
-        user = users.get_user(update.effective_user.id)
+        user: users.User = users.get_user(update.effective_user.id)
+        if not user:
+            user: users.User = users.save_user(update.effective_user)
 
         if user:
             sentry_sdk.set_context('user', {
-                'username': user['username'],
-                'chat_id': user['chat_id'],
+                'username': user.username,
+                'chat_id': user.chat_id,
             })
 
         try:
