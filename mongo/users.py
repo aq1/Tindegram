@@ -20,7 +20,7 @@ class User:
 
 
 def get_all_users() -> List[User]:
-    return [User(u) for u in db.users.find({})]
+    return [User(u) for u in db.users.find({}).sort('paused')]
 
 
 def get_user(chat_id: int) -> User:
