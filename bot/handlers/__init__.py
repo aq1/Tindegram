@@ -12,6 +12,10 @@ from .pause import Pause
 from .resume import Resume
 from .feedback import Feedback
 from .chat_member import ChatMember
+from .set_language import (
+    SetLanguage,
+    SetLanguageQuery,
+)
 
 from .admin.show_chats import ShowChats
 from .admin.show_users import ShowUsers
@@ -28,6 +32,7 @@ commands: List['BaseCommand'] = [
     Pause(),
     Resume(),
     Feedback(),
+    SetLanguage(),
     ShowChats(),
     ShowUsers(),
 ]
@@ -36,4 +41,5 @@ __all__ = [
     'commands',
     'ChatMember',
     'Forward',
+    'SetLanguageQuery',
 ]

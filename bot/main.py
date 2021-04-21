@@ -4,6 +4,7 @@ from telegram.ext import (
     MessageHandler,
     Filters,
     ChatMemberHandler,
+    CallbackQueryHandler,
 )
 
 import settings
@@ -18,6 +19,7 @@ def start_bot():
     for command in commands:
         dispatcher.add_handler(CommandHandler(str(command), command))
 
+    updater.dispatcher.add_handler(CallbackQueryHandler(SetLanguageQuery()))
     dispatcher.add_handler(ChatMemberHandler(ChatMember()))
     dispatcher.add_handler(MessageHandler(~Filters.command, Forward()))
 

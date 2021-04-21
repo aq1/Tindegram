@@ -65,3 +65,13 @@ def user_set_paused(chat_id: int, value: bool) -> None:
             'paused': value,
         }
     })
+
+
+def set_language(chat_id: int, language: str) -> None:
+    db.users.update_one({
+        'chat_id': chat_id,
+    }, {
+        '$set': {
+            'language': language,
+        }
+    })
