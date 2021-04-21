@@ -21,10 +21,10 @@ from .admin.show_chats import ShowChats
 from .admin.show_users import ShowUsers
 
 if TYPE_CHECKING:
-    from .base import BaseCommand
+    from .base import BaseHandler
 
 
-commands: List['BaseCommand'] = [
+commands: List['BaseHandler'] = [
     Start(),
     Connect(),
     Disconnect(),

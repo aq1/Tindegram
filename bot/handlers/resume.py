@@ -7,10 +7,10 @@ from mongo import (
     users,
 )
 
-from .base import BaseCommand
+from .base import BaseHandler
 
 
-class Resume(BaseCommand):
+class Resume(BaseHandler):
     HELP = _(
         'вернуться в поиск, пользователи смогут к вам подключиться'
     )

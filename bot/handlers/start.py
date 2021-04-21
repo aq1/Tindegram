@@ -4,10 +4,10 @@ from telegram import Update
 from telegram.ext import CallbackContext
 from mongo import users
 
-from .base import BaseCommand
+from .base import BaseHandler
 
 
-class Start(BaseCommand):
+class Start(BaseHandler):
     HELP = _(
         'бот добавляет вас в список пользователей, но не добавляет в поиск'
     )

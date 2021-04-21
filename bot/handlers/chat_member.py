@@ -6,10 +6,10 @@ from mongo import (
     users,
     chats,
 )
-from .base import BaseCommand
+from .base import BaseHandler
 
 
-class ChatMember(BaseCommand):
+class ChatMember(BaseHandler):
     def _execute(self, user: users.User, update: Update, context: CallbackContext) -> bool:
         if update.my_chat_member.new_chat_member.status == CHATMEMBER_KICKED:
             users.delete_user(user.chat_id)

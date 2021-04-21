@@ -5,10 +5,10 @@ from telegram.ext import CallbackContext
 from mongo import users
 from mongo import chats
 
-from .base import BaseCommand
+from .base import BaseHandler
 
 
-class Connect(BaseCommand):
+class Connect(BaseHandler):
     HELP = _(
         'начать новый разговор'
     )

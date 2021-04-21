@@ -5,10 +5,10 @@ from telegram.ext import CallbackContext
 
 from mongo import users
 
-from .base import BaseCommand
+from .base import BaseHandler
 
 
-class Help(BaseCommand):
+class Help(BaseHandler):
     HELP = _(
         'подсказка по командам'
     )

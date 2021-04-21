@@ -7,10 +7,10 @@ import settings
 
 from mongo import users
 
-from .base import BaseCommand
+from .base import BaseHandler
 
 
-class Feedback(BaseCommand):
+class Feedback(BaseHandler):
     HELP = _(
         'написать разработчикам отзыв/вопрос/баг'
     )

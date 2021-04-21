@@ -8,10 +8,10 @@ from mongo import (
     users,
 )
 
-from .base import BaseCommand
+from .base import BaseHandler
 
 
-class Forward(BaseCommand):
+class Forward(BaseHandler):
     FAIL_TEXT = _(
         'Вы ни с кем не общаетесь\n'
         'Напишите /connect чтобы найти собеседника'

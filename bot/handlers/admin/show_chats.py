@@ -3,10 +3,10 @@ from telegram.ext import CallbackContext
 from mongo import users
 from mongo import chats
 
-from .base import BaseAdminCommand
+from .base import BaseAdminHandler
 
 
-class ShowChats(BaseAdminCommand):
+class ShowChats(BaseAdminHandler):
     def _execute(self, user: users.User, update: Update, context: CallbackContext) -> bool:
         _chats = chats.get_all_chats()
         result = []

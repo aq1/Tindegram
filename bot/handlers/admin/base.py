@@ -1,4 +1,4 @@
-from ..base import BaseCommand
+from ..base import BaseHandler
 
 from telegram import Update
 from telegram.ext import CallbackContext
@@ -6,7 +6,7 @@ from telegram.ext import CallbackContext
 import settings
 
 
-class BaseAdminCommand(BaseCommand):
+class BaseAdminHandler(BaseHandler):
 
     @property
     def help_text(self) -> str:

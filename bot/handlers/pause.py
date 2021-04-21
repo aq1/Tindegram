@@ -7,10 +7,10 @@ from mongo import (
     users,
 )
 
-from .base import BaseCommand
+from .base import BaseHandler
 
 
-class Pause(BaseCommand):
+class Pause(BaseHandler):
     HELP = _(
         'не участвовать в поиске, пользователи не будут к вам подключаться'
     )

@@ -8,10 +8,10 @@ from mongo import (
     users,
 )
 
-from .base import BaseCommand
+from .base import BaseHandler
 
 
-class Disconnect(BaseCommand):
+class Disconnect(BaseHandler):
     HELP = _(
         'закончить активный разговор'
     )

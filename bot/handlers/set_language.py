@@ -10,10 +10,10 @@ from telegram.ext import CallbackContext
 
 from mongo import users
 
-from .base import BaseCommand
+from .base import BaseHandler
 
 
-class SetLanguage(BaseCommand):
+class SetLanguage(BaseHandler):
     HELP = _(
         'установить язык интерфейса'
     )
@@ -30,7 +30,7 @@ class SetLanguage(BaseCommand):
         return True
 
 
-class SetLanguageQuery(BaseCommand):
+class SetLanguageQuery(BaseHandler):
     def _execute(self, user: users.User, update: Update, context: CallbackContext) -> bool:
         query = update.callback_query
         query.answer()

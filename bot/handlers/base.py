@@ -10,7 +10,7 @@ import stringcase
 from mongo import users
 
 
-class BaseCommand:
+class BaseHandler:
     HELP = ''
     OK_TEXT = ''
     FAIL_TEXT = ''
