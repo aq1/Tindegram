@@ -17,7 +17,7 @@ class Pause(BaseCommand):
 
     OK_TEXT = _(
         'Вы вышли из чата.\n'
-        'Участие в поиске приостановлено. Чтобы вернуться в поиск напишите /start'
+        'Участие в поиске приостановлено. Чтобы вернуться в поиск напишите /resume'
     )
 
     def _execute(self, user: users.User, update: Update, context: CallbackContext) -> bool:
