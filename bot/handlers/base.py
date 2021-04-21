@@ -1,4 +1,5 @@
 import logging
+from gettext import gettext as _
 
 import sentry_sdk
 from telegram import Update
@@ -35,10 +36,10 @@ class BaseCommand:
             ok = self._execute(user, update, context)
         except Exception as e:
             logging.exception(str(e))
-            update.message.reply_text(
+            update.message.reply_text(_(
                 'Произошла ошибка. '
                 'Бот находится в разработке, так что это неудивительно',
-            )
+            ))
             return
 
         text = [self.FAIL_TEXT, self.OK_TEXT][ok]

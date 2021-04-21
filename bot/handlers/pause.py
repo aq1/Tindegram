@@ -1,3 +1,5 @@
+from gettext import gettext as _
+
 from telegram import Update
 from telegram.ext import CallbackContext
 from mongo import (
@@ -9,11 +11,11 @@ from .base import BaseCommand
 
 
 class Pause(BaseCommand):
-    HELP = (
+    HELP = _(
         'не участвовать в поиске, пользователи не будут к вам подключаться'
     )
 
-    OK_TEXT = (
+    OK_TEXT = _(
         'Вы вышли из чата.\n'
         'Участие в поиске приостановлено. Чтобы вернуться в поиск напишите /start'
     )

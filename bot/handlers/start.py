@@ -1,3 +1,5 @@
+from gettext import gettext as _
+
 from telegram import Update
 from telegram.ext import CallbackContext
 from mongo import users
@@ -6,11 +8,11 @@ from .base import BaseCommand
 
 
 class Start(BaseCommand):
-    HELP = (
+    HELP = _(
         'бот добавляет вас в список пользователей, но не добавляет в поиск'
     )
 
-    OK_TEXT = (
+    OK_TEXT = _(
         'Привет. Этот бот создает чат со случайным пользователем.\n'
         'Мы не храним ваши сообщения.\n'
         'Но все равно относитесь отвественно к тому что отправляете\n'

@@ -16,7 +16,7 @@ def get_all_chats():
 def connect(chat_id: int) -> Optional[int]:
     try:
         busy_users = db.chats.aggregate([
-            {'$unwind': "$users"},
+            {'$unwind': '$users'},
             {'$group': {'_id': None, '_users': {'$addToSet': '$users'}}},
             {'$project': {'_id': 0, 'users': '$_users'}}
         ]).next()['users']

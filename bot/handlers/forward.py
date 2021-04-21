@@ -1,3 +1,5 @@
+from gettext import gettext as _
+
 from telegram import Update, Message, Bot, TelegramError
 from telegram.ext import CallbackContext
 
@@ -10,7 +12,7 @@ from .base import BaseCommand
 
 
 class Forward(BaseCommand):
-    FAIL_TEXT = (
+    FAIL_TEXT = _(
         'Вы ни с кем не общаетесь\n'
         'Напишите /connect чтобы найти собеседника'
     )
@@ -30,7 +32,7 @@ class Forward(BaseCommand):
                     )
                 except TelegramError:
                     update.message.reply_text(
-                        text=(
+                        text=_(
                             'Не удалось переслать сообщение. '
                             'Возможно пользователь приостановил бота.'
                         )
@@ -57,5 +59,5 @@ class Forward(BaseCommand):
         else:
             bot.send_message(
                 chat_id=message.chat_id,
-                text='Пересылка таких сообщений пока не поддерживается',
+                text=_('Пересылка таких сообщений пока не поддерживается'),
             )

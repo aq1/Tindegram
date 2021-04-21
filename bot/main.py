@@ -1,5 +1,3 @@
-import logging
-
 from telegram.ext import (
     Updater,
     CommandHandler,
@@ -22,8 +20,6 @@ def start_bot():
 
     dispatcher.add_handler(ChatMemberHandler(ChatMember()))
     dispatcher.add_handler(MessageHandler(~Filters.command, Forward()))
-
-    logging.info('Starting bot')
 
     commands_help_text = '\n'.join([
         command.help_text

@@ -1,3 +1,5 @@
+from gettext import gettext as _
+
 from telegram import Update
 from telegram.error import TelegramError
 from telegram.ext import CallbackContext
@@ -10,16 +12,16 @@ from .base import BaseCommand
 
 
 class Disconnect(BaseCommand):
-    HELP = (
+    HELP = _(
         'закончить активный разговор'
     )
 
-    OK_TEXT = (
+    OK_TEXT = _(
         'Вы закончили разговор\n'
         'Напишите /connect чтобы начать новый'
     )
 
-    FAIL_TEXT = (
+    FAIL_TEXT = _(
         'Вы ни с кем не общаетесь'
     )
 
@@ -33,7 +35,7 @@ class Disconnect(BaseCommand):
                 try:
                     context.bot.send_message(
                         chat_id=chat_id,
-                        text=(
+                        text=_(
                             'Ваш собеседник покинул чат. Напишите /connect чтобы найти нового'
                         ),
                     )

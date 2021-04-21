@@ -1,3 +1,5 @@
+from gettext import gettext as _
+
 from telegram import Update
 from telegram.ext import CallbackContext
 
@@ -9,15 +11,15 @@ from .base import BaseCommand
 
 
 class Feedback(BaseCommand):
-    HELP = (
+    HELP = _(
         'написать разработчикам отзыв/вопрос/баг'
     )
 
-    OK_TEXT = (
+    OK_TEXT = _(
         'Сообщение получено. Спасибо.'
     )
 
-    FAIL_TEXT = (
+    FAIL_TEXT = _(
         'Пишите сообщение сразу, например "/feedback привет"'
     )
 

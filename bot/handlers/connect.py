@@ -1,3 +1,5 @@
+from gettext import gettext as _
+
 from telegram import Update
 from telegram.ext import CallbackContext
 from mongo import users
@@ -7,16 +9,16 @@ from .base import BaseCommand
 
 
 class Connect(BaseCommand):
-    HELP = (
+    HELP = _(
         'начать новый разговор'
     )
 
-    OK_TEXT = (
+    OK_TEXT = _(
         'Собеседник найден! Начинайте общение.\n'
         'Напишите /disconnect чтобы остановить разговор.'
     )
 
-    FAIL_TEXT = (
+    FAIL_TEXT = _(
         'Пользователь не найден.\n'
         'Скорее всего они заняты в других чатах.'
     )
@@ -30,6 +32,6 @@ class Connect(BaseCommand):
         if partner_chat_id:
             context.bot.send_message(
                 chat_id=partner_chat_id,
-                text='К вам подключился новый собеседник',
+                text=_('К вам подключился новый собеседник'),
             )
         return bool(partner_chat_id)
