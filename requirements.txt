@@ -3,3 +3,4 @@ pymongo~=3.11.3
 django-environ
 sentry-sdk
 stringcase
+Babel
