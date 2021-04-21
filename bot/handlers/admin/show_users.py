@@ -9,8 +9,9 @@ from .base import BaseAdminCommand
 class ShowUsers(BaseAdminCommand):
     def _execute(self, user: users.User, update: Update, context: CallbackContext) -> bool:
         _users = [
-            '{}{}'.format(
+            '{} {} {}'.format(
                 '⏹' if u.paused else '👌',
+                u.language,
                 str(u),
             )
             for u in users.get_all_users()

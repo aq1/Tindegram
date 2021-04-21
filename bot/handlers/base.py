@@ -23,13 +23,6 @@ class BaseCommand:
         return NotImplemented
 
     def __call__(self, update: Update, context: CallbackContext) -> None:
-
-        gettext.translation(
-            'messages',
-            'locale',
-            languages=[update.effective_user.language_code or 'en'],
-        ).install()
-
         user: users.User = users.get_user(update.effective_user.id)
         if not user:
             user: users.User = users.save_user(update.effective_user)
@@ -39,6 +32,12 @@ class BaseCommand:
                 'username': user.username,
                 'chat_id': user.chat_id,
             })
+
+        gettext.translation(
+            'messages',
+            'locale',
+            languages=[user.language],
+        ).install()
 
         try:
             ok = self._execute(user, update, context)
