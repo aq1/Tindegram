@@ -8,6 +8,11 @@ environ.Env.read_env(env.str('ENV_PATH', '.env'))
 
 DEBUG = env('DEBUG', default=False)
 
+LANGUAGES = [
+    'ru',
+    'en',
+]
+
 MONGO_HOST = env('MONGO_HOST')
 MONGO_PORT = env('MONGO_PORT')
 MONGO_DB = env('MONGO_DB')

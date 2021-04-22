@@ -1,12 +1,13 @@
 import logging
 import gettext
-from gettext import gettext as _
+
 
 import sentry_sdk
 from telegram import Update
 from telegram.ext import CallbackContext
 import stringcase
 
+import settings
 from mongo import users
 
 
@@ -17,7 +18,7 @@ class BaseHandler:
 
     @property
     def help_text(self) -> str:
-        return f'{self} - {self.HELP}'
+        return f'{self} - {_(self.HELP)}'
 
     def _execute(self, user: users.User, update: Update, context: CallbackContext) -> bool:
         return NotImplemented
@@ -33,11 +34,12 @@ class BaseHandler:
                 'chat_id': user.chat_id,
             })
 
-        gettext.translation(
-            'messages',
-            'locale',
-            languages=[user.language],
-        ).install()
+        if user.language in settings.LANGUAGES:
+            gettext.translation(
+                'messages',
+                'locale',
+                languages=[user.language],
+            ).install()
 
         try:
             ok = self._execute(user, update, context)
@@ -52,7 +54,7 @@ class BaseHandler:
         text = [self.FAIL_TEXT, self.OK_TEXT][ok]
 
         if text:
-            update.effective_chat.send_message(text)
+            update.effective_chat.send_message(_(text))
 
     def __str__(self):
         return stringcase.snakecase(self.__class__.__name__)

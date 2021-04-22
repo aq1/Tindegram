@@ -9,5 +9,13 @@ if not settings.DEBUG:
         traces_sample_rate=0
     )
 
+import gettext
+
+gettext.translation(
+    'messages',
+    'locale',
+    languages=['en'],
+).install()
+
 if __name__ == '__main__':
     start_bot()
