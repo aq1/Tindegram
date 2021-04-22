@@ -3,7 +3,7 @@ from typing import Optional
 from mongo.client import db
 
 
-def get_chat(chat_id):
+def get_chat(chat_id) -> dict:
     return db.chats.find_one({
         'users': chat_id,
     })

@@ -30,7 +30,7 @@ class Disconnect(BaseHandler):
         if not chat:
             return False
 
-        for chat_id in chat.users:
+        for chat_id in chat['users']:
             if chat_id != user.chat_id:
                 try:
                     context.bot.send_message(
