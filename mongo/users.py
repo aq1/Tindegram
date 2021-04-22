@@ -1,4 +1,8 @@
-from typing import Any, List
+from typing import (
+    Any,
+    List,
+    Union,
+)
 
 from pymongo.errors import DuplicateKeyError
 from telegram import User as TelegramUser
@@ -7,7 +11,8 @@ from mongo.client import db
 
 
 class User:
-    def __init__(self, user_dict: dict[str, Any]):
+    def __init__(self, user_dict: Union[dict[str, Any], None]):
+        user_dict = user_dict or {}
         self.chat_id: int = user_dict.get('chat_id', 0)
         self.username: str = user_dict.get('username', '')
         self.first_name: str = user_dict.get('first_name', '')
