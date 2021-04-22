@@ -58,7 +58,7 @@ msgstr "You have ended the conversationType /connect to start new"
 
 #: bot/handlers/disconnect.py:24
 msgid "Вы ни с кем не общаетесь"
-msgstr "You've not got an active chat"
+msgstr "You have not got an active chat"
 
 #: bot/handlers/disconnect.py:38
 msgid "Ваш собеседник покинул чат. Напишите /connect чтобы найти нового"
