@@ -1,4 +1,4 @@
-# English (United States) translations for PROJECT.
+# Russian (Russia) translations for PROJECT.
 # Copyright (C) 2021 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
@@ -8,11 +8,12 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-04-22 03:53+0300\n"
-"PO-Revision-Date: 2021-04-22 01:38+0300\n"
+"PO-Revision-Date: 2021-04-22 03:53+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: en_US\n"
-"Language-Team: en_US <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Language: ru_RU\n"
+"Language-Team: ru_RU <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,79 +21,75 @@ msgstr ""
 
 #: bot/handlers/base.py:48
 msgid "Произошла ошибка. Бот находится в разработке, так что это неудивительно"
-msgstr "We encountered an error. Bot is in development so it was not sudden"
+msgstr ""
 
 #: bot/handlers/connect.py:12
 msgid "начать новый разговор"
-msgstr "start new conversation"
+msgstr ""
 
 #: bot/handlers/connect.py:16
 msgid ""
 "Собеседник найден! Начинайте общение.\n"
 "Напишите /disconnect чтобы остановить разговор."
 msgstr ""
-"A partner found! Start talking.\n"
-"Type /disconnect to end the conversation"
 
 #: bot/handlers/connect.py:21
 msgid ""
 "Пользователь не найден.\n"
 "Скорее всего они заняты в других чатах."
 msgstr ""
-"User was not found.\n"
-"Probably they are all busy in other chats."
 
 #: bot/handlers/connect.py:35
 msgid "К вам подключился новый собеседник"
-msgstr "A new user connected to you"
+msgstr ""
 
 #: bot/handlers/disconnect.py:15
 msgid "закончить активный разговор"
-msgstr "stop current conversation"
+msgstr ""
 
 #: bot/handlers/disconnect.py:19
 msgid ""
 "Вы закончили разговор\n"
 "Напишите /connect чтобы начать новый"
-msgstr "You have ended the conversationType /connect to start new"
+msgstr ""
 
 #: bot/handlers/disconnect.py:24
 msgid "Вы ни с кем не общаетесь"
-msgstr "You've not got an active chat"
+msgstr ""
 
 #: bot/handlers/disconnect.py:38
 msgid "Ваш собеседник покинул чат. Напишите /connect чтобы найти нового"
-msgstr "Your partner left the chat. Type /connect to find a new one"
+msgstr ""
 
 #: bot/handlers/feedback.py:14
 msgid "написать разработчикам отзыв/вопрос/баг"
-msgstr "text the developers about bug or anything"
+msgstr ""
 
 #: bot/handlers/feedback.py:18
 msgid "Сообщение получено. Спасибо."
-msgstr "The message has been recieved. Thank you"
+msgstr ""
 
 #: bot/handlers/feedback.py:22
 msgid "Пишите сообщение сразу, например \"/feedback привет\""
-msgstr "Write the message text. For example \"/feedback hello there\""
+msgstr ""
 
 #: bot/handlers/forward.py:15
 msgid ""
 "Вы ни с кем не общаетесь\n"
 "Напишите /connect чтобы найти собеседника"
-msgstr "You don't chat with anybodyType /connect to start a new chat"
+msgstr ""
 
 #: bot/handlers/forward.py:35
 msgid "Не удалось переслать сообщение. Возможно пользователь приостановил бота."
-msgstr "We could not send this message. Probably the user stopped the bot"
+msgstr ""
 
 #: bot/handlers/forward.py:62
 msgid "Пересылка таких сообщений пока не поддерживается"
-msgstr "This type of messages is not supported right now"
+msgstr ""
 
 #: bot/handlers/help.py:12
 msgid "подсказка по командам"
-msgstr "help on commands"
+msgstr ""
 
 #: bot/handlers/help.py:16
 msgid ""
@@ -106,31 +103,20 @@ msgid ""
 "Бот пересылает текст, видео, фото, стикеры, анимацию, аудио и видео "
 "сообщения"
 msgstr ""
-"Commands available:\n"
-"/start - you are added to list of bot users\n"
-"/connect - start new conversation\n"
-"/disconnect - stop active conversation\n"
-"/feedback {message} - send message to developers\n"
-"/pause - stop bot from finding new chats for you\n"
-"/resume - allow bot to find new chats for you\n"
-"Bot sends text, video, photo, stickers, animations, voice and video "
-"messages"
 
 #: bot/handlers/pause.py:14
 msgid "не участвовать в поиске, пользователи не будут к вам подключаться"
-msgstr "stop the bot from searching new chats"
+msgstr ""
 
 #: bot/handlers/pause.py:18
 msgid ""
 "Вы вышли из чата.\n"
 "Участие в поиске приостановлено. Чтобы вернуться в поиск напишите /resume"
 msgstr ""
-"You left the chat.\n"
-"If you want to be available for other users, type /resume"
 
 #: bot/handlers/resume.py:14
 msgid "вернуться в поиск, пользователи смогут к вам подключиться"
-msgstr "allow bot to find new chats"
+msgstr ""
 
 #: bot/handlers/resume.py:18
 msgid ""
@@ -138,12 +124,10 @@ msgid ""
 "Теперь пользователи смогут вас найти. Напишите /pause чтобы остановить "
 "поиск"
 msgstr ""
-"You resumed the bot.\n"
-"Now users will be able to find you. Type /pause to stop the search"
 
 #: bot/handlers/set_language.py:17
 msgid "установить язык интерфейса"
-msgstr "set interface language"
+msgstr ""
 
 #: bot/handlers/set_language.py:29
 msgid "Please choose:"
@@ -151,13 +135,11 @@ msgstr ""
 
 #: bot/handlers/set_language.py:38
 msgid "Язык выбран: {}"
-msgstr "Language set: {}"
+msgstr ""
 
 #: bot/handlers/start.py:11
 msgid "бот добавляет вас в список пользователей, но не добавляет в поиск"
 msgstr ""
-"bot adds you to list of users, but does not search new chats. Type "
-"/connect to find new chat"
 
 #: bot/handlers/start.py:15
 msgid ""
@@ -169,11 +151,4 @@ msgid ""
 "Пересылаются текст, фото, видео, стикеры, анимация, голосовые и видео "
 "сообщения"
 msgstr ""
-"Hello. This bot creates chat with a random user.\n"
-"We do not store your messages.\n"
-"But anyway be carefull with what you send\n"
-"Type /connect to find first chat. Type /pause to stop the bot from "
-"finding users for you.\n"
-"Bot sends text, photo, video, stickers, animation, voice and video "
-"messages"
 

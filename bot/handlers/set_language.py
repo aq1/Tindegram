@@ -26,7 +26,7 @@ class SetLanguage(BaseHandler):
 
         reply_markup = InlineKeyboardMarkup(keyboard)
 
-        update.message.reply_text(_('Please choose:'), reply_markup=reply_markup)
+        update.message.reply_text(_('Выберите язык:'), reply_markup=reply_markup)
         return True
 
 
