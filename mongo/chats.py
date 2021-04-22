@@ -13,15 +13,18 @@ def get_all_chats():
     return db.chats.find({})
 
 
-def connect(chat_id: int) -> Optional[int]:
+def get_users_in_chats() -> list[int]:
     try:
-        busy_users = db.chats.aggregate([
+        return db.chats.aggregate([
             {'$unwind': '$users'},
             {'$group': {'_id': None, '_users': {'$addToSet': '$users'}}},
-            {'$project': {'_id': 0, 'users': '$_users'}}
-        ]).next()['users']
+        ]).next()['_users']
     except (StopIteration, KeyError):
-        busy_users = []
+        return []
+
+
+def connect(chat_id: int) -> Optional[int]:
+    busy_users = get_users_in_chats()
 
     try:
         partner_chat_id = db.users.aggregate([
