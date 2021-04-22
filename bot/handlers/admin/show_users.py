@@ -11,7 +11,7 @@ class ShowUsers(BaseAdminHandler):
         _users = [
             '{}{}{}'.format(
                 '⏹' if u.paused else '👌',
-                '🇷🇺' if u.language is 'ru' else '🇺🇸',
+                '🇷🇺' if u.language == 'ru' else '🇺🇸',
                 str(u),
             )
             for u in users.get_all_users()
