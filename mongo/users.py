@@ -8,15 +8,18 @@ from mongo.client import db
 
 class User:
     def __init__(self, user_dict: dict[str, Any]):
-        self.chat_id: int = user_dict['chat_id']
-        self.username: str = user_dict['username']
-        self.first_name: str = user_dict['first_name']
-        self.last_name: str = user_dict['last_name']
-        self.language: str = user_dict['language']
-        self.paused: bool = user_dict['paused']
+        self.chat_id: int = user_dict.get('chat_id', 0)
+        self.username: str = user_dict.get('username', '')
+        self.first_name: str = user_dict.get('first_name', '')
+        self.last_name: str = user_dict.get('last_name', '')
+        self.language: str = user_dict.get('language', '')
+        self.paused: bool = user_dict.get('paused', True)
 
     def __str__(self) -> str:
         return str(self.username or f'{self.first_name} {self.last_name}')
+
+    def __bool__(self) -> bool:
+        return bool(self.chat_id)
 
 
 def get_all_users() -> List[User]:
