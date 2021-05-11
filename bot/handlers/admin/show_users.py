@@ -20,7 +20,7 @@ class ShowUsers(BaseAdminHandler):
                 status = '⏹'
 
             language = '🇺🇸'
-            if language == 'ru':
+            if user.language == 'ru':
                 language = '🇷🇺'
 
             _users.append('{}{}{}'.format(
